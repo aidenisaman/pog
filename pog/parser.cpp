@@ -94,9 +94,26 @@ namespace pog {
     }
 
     std::unique_ptr<Expression> Parser::expression() {
-        return equality();
+        return assignment();  // Start with assignment now
     }
 
+    std::unique_ptr<Expression> Parser::assignment() {
+        auto expr = equality();
+
+        if (match({ TokenType::EQUAL })) {
+            Token equals = previous();
+            auto value = assignment();  // Right-recursion for assignment
+
+            if (auto* variable = dynamic_cast<Variable*>(expr.get())) {
+                Token name = variable->name;
+                return std::make_unique<AssignExpr>(std::move(name), std::move(value));
+            }
+
+            error(equals, "Invalid assignment target.");
+        }
+
+        return expr;
+    }
     std::unique_ptr<Expression> Parser::equality() {
         auto expr = comparison();
 

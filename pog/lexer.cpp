@@ -72,9 +72,18 @@ namespace pog {
         case '<': addToken(match('=') ? TokenType::LESS_EQUAL : TokenType::LESS); break;
         case '>': addToken(match('=') ? TokenType::GREATER_EQUAL : TokenType::GREATER); break;
         case '/':
-            if (match('/')) {
-                // A comment goes until the end of the line
-                while (peek() != '\n' && !isAtEnd()) advance();
+            if (match('+')) {
+                // Comment goes until +/
+                while (!(peek() == '+' && peekNext() == '/') && !isAtEnd()) {
+                    if (peek() == '\n') line++;
+                    advance();
+                }
+
+                if (!isAtEnd()) {
+                    // Consume the +/
+                    advance(); // +
+                    advance(); // /
+                }
             }
             else {
                 addToken(TokenType::SLASH);

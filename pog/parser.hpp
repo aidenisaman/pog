@@ -30,6 +30,7 @@ namespace pog {
         std::unique_ptr<Expression> primary();
         std::unique_ptr<Statement> block();
         std::unique_ptr<Statement> whileStatement();
+        std::unique_ptr<Expression> assignment();
 
         // Helper methods
         bool match(std::initializer_list<TokenType> types);

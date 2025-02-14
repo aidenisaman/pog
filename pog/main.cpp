@@ -135,28 +135,35 @@ void printExpression(const pog::Expression* expr, int indent) {
             printExpression(arg.get(), indent + 1);
         }
     }
+    else if (const auto* assign = dynamic_cast<const pog::AssignExpr*>(expr)) {
+        std::cout << indentation << "Assignment:" << std::endl;
+        std::cout << indentation << "Variable: " << assign->name.getLexeme() << std::endl;
+        std::cout << indentation << "Value:" << std::endl;
+        printExpression(assign->value.get(), indent + 1);
+    }
 }
 
 int main() {
     // Test program with all features
     std::string source = R"(
         pogchamp main() {
+            /+ Starting the program +/
             poggers("Starting program!");
             
-            // If statement test
+            /+ Testing if statement +/
             pepega (x > 10) {
                 poggers("x is greater than 10!");
             } weirdchamp {
                 poggers("x is not greater than 10!");
             }
 
-            // While loop test
+            /+ Testing while loop +/
             kappa (count < 3) {
                 poggers("Counting...");
                 count = count + 1;
             }
 
-            // Nested structures test
+            /+ Testing nested structures +/
             pepega (flag) {
                 kappa (y > 0) {
                     poggers("Processing...");
