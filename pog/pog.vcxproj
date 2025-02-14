@@ -128,12 +128,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="enviroment.cpp" />
+    <ClCompile Include="error.cpp" />
+    <ClCompile Include="interpreter.cpp" />
+    <ClCompile Include="interpreter_tests.cpp" />
     <ClCompile Include="lexer.cpp" />
+    <ClCompile Include="lexer_tests.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="object.cpp" />
+    <ClCompile Include="parser.cpp" />
+    <ClCompile Include="parser_tests.cpp" />
     <ClCompile Include="token.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ast.hpp" />
+    <ClInclude Include="enviroment.hpp" />
+    <ClInclude Include="error.hpp" />
+    <ClInclude Include="interpreter.hpp" />
     <ClInclude Include="lexer.hpp" />
+    <ClInclude Include="object.hpp" />
+    <ClInclude Include="parser.hpp" />
     <ClInclude Include="token.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

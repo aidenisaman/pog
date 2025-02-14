@@ -1,3 +1,17 @@
+/*******************************************************************************
+ * POG Language Interpreter
+ * token.hpp
+ *
+ * Defines the Token class and TokenType enum which represent the basic units
+ * of the POG language. Each token has a type, the actual text (lexeme), and
+ * line number where it appears in the source code.
+ *
+ * Token Types include:
+ * - Keywords (poggers, pepega, etc.)
+ * - Operators (+, -, *, /, etc.)
+ * - Literals (numbers, strings)
+ * - Special tokens (EOF)
+ ******************************************************************************/
 #pragma once
 #include <string>
 #include <string_view>
@@ -25,6 +39,8 @@ namespace pog {
         GREATER, GREATER_EQUAL,    // > >=
         LESS, LESS_EQUAL,         // < <=
 
+        FUNCTION,
+
         // Literals
         IDENTIFIER, STRING, NUMBER,
 
@@ -34,7 +50,7 @@ namespace pog {
 
     class Token {
     public:
-        Token(TokenType type, std::string lexeme, int line);
+        // Single constructor that takes string_view
         Token(TokenType type, std::string_view lexeme, int line);
 
         TokenType getType() const { return type; }
