@@ -39,12 +39,18 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="tokencpp.cpp">
+    <ClCompile Include="token.cpp">
+      <Filter>Source Files\lexer</Filter>
+    </ClCompile>
+    <ClCompile Include="lexer.cpp">
       <Filter>Source Files\lexer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="token.hpp">
+      <Filter>Source Files\lexer</Filter>
+    </ClInclude>
+    <ClInclude Include="lexer.hpp">
       <Filter>Source Files\lexer</Filter>
     </ClInclude>
   </ItemGroup>
